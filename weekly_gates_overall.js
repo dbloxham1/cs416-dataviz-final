@@ -4,7 +4,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/gat
     const parseTime = d3.timeParse('%Y-%m-%d');
     data.forEach(d => {
         d.service_week = parseTime(d.firstDayOfWeek);
-        d.gated_entries = +d.gated_entries;
+        d.gated_entries = d.gated_entries;
     });
 
     // Set the dimensions and margins of the graph
