@@ -1,4 +1,4 @@
-d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/gated_entries_overall.csv').then(data => {
+d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_overall.csv').then(data => {
 
     // Parse the date and time
     const parseTime = d3.timeParse('%Y-%m-%d');

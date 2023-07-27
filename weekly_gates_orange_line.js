@@ -1,5 +1,5 @@
 // Load the data from the CSV file
-d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/gated_entries_by_week_route.csv').then(data => {
+d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route.csv').then(data => {
     // Parse the date and convert gated_entries to number
     const parseTime = d3.timeParse('%Y-%m-%d');
     data = data.filter(d => d.route_short === 'Orange').map(d => {
@@ -9,9 +9,9 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/gat
     });
 
     // Set the dimensions and margins of the graph
-    const margin = {top: 20, right: 20, bottom: 30, left: 50};
-    const width = 960 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const margin = {top: 20, right: 75, bottom: 20, left: 75};
+    const width = d3.select("svg").attr("width") - margin.left - margin.right;
+    const height = d3.select("svg").attr("height") - margin.top - margin.bottom;
 
     // Append the svg object to the body of the page
     const svg = d3.select('#orange')
