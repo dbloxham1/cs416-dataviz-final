@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <title>CS 416 Narrative Visualization Project</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="js/packages/d3-annotation.min.js"></script>
+    <script src="weekly_gates_all_system.js"></script>
+    <script src="weekly_gates_blue_line.js"></script>
+    <script src="weekly_gates_green_line.js"></script>
+    <script src="weekly_gates_orange_line.js"></script>
+    <script src="weekly_gates_red_line.js"></script>
     <style>
-
+        path {
+            fill:none;
+            stroke:black;
+        }
     </style>
     <body>
         <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
         <h2 style="text-align:center">Ridership on the MBTA</h2>
-        <script>
-
-        </script>
-
+        <p style="text-align:center">
+            <button>Red</button>
+            <button>Orange</button>
+            <button>Blue</button>
+            <button>Green</button>
+        </p>
+        <div id="overall" style="text-align:center"></div>
+        <svg width = 600 height = 600></svg>
     </body>
 </html>

@@ -14,7 +14,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/gat
     const height = 500 - margin.top - margin.bottom;
 
     // Append the svg object to the body of the page
-    const svg = d3.select('#overall')
+    const svg = d3.select('#orange')
                   .append('svg')
                   .attr('width', width + margin.left + margin.right)
                   .attr('height', height + margin.top + margin.bottom)
