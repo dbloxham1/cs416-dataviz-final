@@ -19,18 +19,13 @@ async function init() {
     y.domain([0, d3.max(data, d => d.gated_entries)]);
 
     var g = d3.select('#overall')
-        .append('path')
-        .attr("transform", "translate"+margin.top+","+margin.left+")")
-        .selectAll()
+        .append('g')
+        .attr("transform", "translate("+margin.top+","+margin.left+")")
         .data(data)
         .enter()
         .append("circle")
-        .attr("cx", function(d) {
-            return x(d.service_week);
-        })
-        .attr("cy", function(d) {
-            return y(d.gated_entries);
-        })
+        .attr("cx", d => x(d.service_week))
+        .attr("cy", d => y(d.gated_entries))
         .attr("r", 5)
         ;
     var yaxis = d3.select("svg")
