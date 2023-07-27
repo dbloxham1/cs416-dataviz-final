@@ -1,15 +1,14 @@
-
 async function init() {
     const margin = {top: 50, left: 50, right: 50, bottom: 50},
         width = d3.select("svg").attr("width") - margin.left - margin.right,
         height = d3.select("svg").attr("height") - margin.top - margin.bottom
     ;
 
+    const parseTime = d3.timeParse('%Y-%m-%d');
     function row(d) {
-        return {
-            service_week: +d['firstDayOfWeek'],
-            gated_entries: +d['gated_entries']
-        };
+        d.service_week = parseTime(d['firstDayOfWeek']);
+        d.gated_entries = +d['gated_entries'];
+        return d;
     }
     const data = await d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/gated_entries_overall.csv', row)
     ;
@@ -18,9 +17,9 @@ async function init() {
 
     x.domain(d3.extent(data, d => d.service_week));
     y.domain([0, d3.max(data, d => d.gated_entries)]);
-    
-    var g = d3.select("svg")
-        .append("g")
+
+    var g = d3.select('#overall')
+        .append('path')
         .attr("transform", "translate"+margin.top+","+margin.left+")")
         .selectAll()
         .data(data)
