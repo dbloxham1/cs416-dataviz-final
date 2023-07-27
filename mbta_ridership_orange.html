@@ -17,13 +17,18 @@
         <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
         <h2 style="text-align:center">Ridership on the MBTA</h2>
         <p style="text-align:center">
-            <button type="button" onclick="window.location.href='//dbloxham.github.io/html/mbta_ridership.html'">Systemwide</button>
-            <button onclick="">Red</button>
-            <button onclick="">Orange</button>
-            <button onclick="">Blue</button>
-            <button onclick="">Green</button>
+            <button id="systemwideButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership.html'">Systemwide</button>
+            <button id="redButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_red.html'">Red</button>
+            <button id="orangeButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_orange.html'">Orange</button>
+            <button id="blueButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_blue.html'">Blue</button>
+            <button id="greenButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_green.html'">Green</button>
         </p>
-        <div id="orange" style="text-align:center"></div>
+        <div id="parentDiv" style="text-align: center;">
+            <div id="orange" style="text-align:center"></div>
+        </div>
         <svg width = 960 height = 500></svg>
+        <script>
+
+        </script>
     </body>
 </html>
