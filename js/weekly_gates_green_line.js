@@ -8,6 +8,12 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         return d;
     });
 
+    glxPoint = data.filter(d => d.firstDayOfWeek === '2022-03-21').map(d => {
+        d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
+        d.gated_entries = +d.gated_entries;
+        return d;
+    });
+
     // Set the dimensions and margins of the graph
     const margin = {top: 20, right: 75, bottom: 20, left: 75};
     const width = d3.select("svg").attr("width") - margin.left - margin.right;
@@ -49,4 +55,14 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
     // Add the Y Axis
     svg.append('g')
        .call(d3.axisLeft(yScale));
+
+    //Plot individual points
+    svg.append("svg")
+        .data(glxPoint)
+        .enter()
+        .append("circle")
+        .attr("cx", d => x(d.service_week))
+        .attr("cy", d => y(d.gated_entries))
+        .attr("r", 5)
+    ;
 });
