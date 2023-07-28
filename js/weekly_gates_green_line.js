@@ -8,6 +8,8 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         return d;
     });
 
+    const pointData = data.filter(d => d.firstDayOfWeek === parseTime('2022-03-21'))[0];
+
     // Set the dimensions and margins of the graph
     const margin = {top: 20, right: 75, bottom: 20, left: 75};
     const width = d3.select("svg").attr("width") - margin.left - margin.right;
@@ -40,6 +42,13 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         .data([data])
         .attr('class', 'line')
         .attr('d', line);
+
+    svg.append('circle')
+        .attr("cx", xScale(pointData.firstDayOfWeek))
+        .attr("cy", yScale(pointData.gated_entries))
+        .attr("r", 6)
+        .style('fill','green')
+    ;
 
     // Add the X Axis
     svg.append('g')
