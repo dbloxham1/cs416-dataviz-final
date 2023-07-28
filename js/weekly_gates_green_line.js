@@ -8,7 +8,10 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         return d;
     });
 
-    const pointData = data.filter(d => d.firstDayOfWeek === parseTime('2022-03-21'))[0];
+    const pointData = data.filter(d => d.firstDayOfWeek === '2022-03-21').map(d => {
+        d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
+        d.gated_entries = +d.gated_entries;
+    });
 
     // Set the dimensions and margins of the graph
     const margin = {top: 20, right: 75, bottom: 20, left: 75};
@@ -36,19 +39,21 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         .y(d => yScale(d.gated_entries));
 
     // Add the scatterplot points
+    svg.selectAll()
+        .data(data.filter(d => d.firstDayOfWeek.getTime() >= new Date('2022-03-20').getTime() && d.firstDayOfWeek.getTime() < new Date('2022-03-28').getTime()))
+        .enter()
+        .append('circle')
+        .attr("cx", d => xScale(d.firstDayOfWeek))
+        .attr("cy", d => yScale(d.gated_entries))
+        .attr("r", 6)
+        .style('fill','green')
+    ;
     
     svg.append('path')
         .style("stroke","green")
         .data([data])
         .attr('class', 'line')
         .attr('d', line);
-
-    svg.append('circle')
-        .attr("cx", xScale(pointData.firstDayOfWeek))
-        .attr("cy", yScale(pointData.gated_entries))
-        .attr("r", 6)
-        .style('fill','green')
-    ;
 
     // Add the X Axis
     svg.append('g')
