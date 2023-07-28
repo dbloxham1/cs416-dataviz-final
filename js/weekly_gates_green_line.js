@@ -42,6 +42,27 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
 
     // Add the scatterplot points
     svg.selectAll()
+        .data(data.filter(d => d.firstDayOfWeek.getTime() >= new Date('2020-03-08').getTime() && d.firstDayOfWeek.getTime() < new Date('2020-03-15').getTime()))
+        .enter()
+        .append('circle')
+        .attr("cx", d => xScale(d.firstDayOfWeek))
+        .attr("cy", d => yScale(d.gated_entries))
+        .attr("r", 6)
+        .style('fill','green')
+        .on("mouseover",function(d){
+            tooltip.style("opacity",1)
+                .style("left",(d.pageX)+"px")
+                .style("top",(d.pageY-60)+"px")
+                .html("COVID Shutdown Begins")
+            ;
+        })
+        .on("mouseout",function(){
+            tooltip.style("opacity",0)
+            ;
+        })
+    ;
+
+    svg.selectAll()
         .data(data.filter(d => d.firstDayOfWeek.getTime() >= new Date('2022-03-20').getTime() && d.firstDayOfWeek.getTime() < new Date('2022-03-28').getTime()))
         .enter()
         .append('circle')
@@ -51,9 +72,6 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         .style('fill','green')
         .on("mouseover",function(d){
             tooltip.style("opacity",1)
-                //.attr("transform","translate("+d.pageX+","+d.pageY+")")
-                .attr("width","100px")
-                .attr("height","40px")
                 .style("left",(d.pageX-100)+"px")
                 .style("top",(d.pageY-60)+"px")
                 .html("Opening of Green Line Extension")
