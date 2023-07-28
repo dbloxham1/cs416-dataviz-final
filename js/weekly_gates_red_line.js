@@ -29,6 +29,8 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                      .domain([0, d3.max(data, d => d.gated_entries)])
                      .range([height, 0]);
 
+    var tooltip = d3.select('#tooltip');
+
     const line = d3.line()
         .x(d => xScale(d.firstDayOfWeek))
         .y(d => yScale(d.gated_entries));

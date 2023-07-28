@@ -33,6 +33,8 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
     const yScale = d3.scaleLinear()
                      .domain([0, d3.max(data, d => d.gated_entries)])
                      .range([height, 0]);
+    
+    var tooltip = d3.select('#tooltip');
 
     const line = d3.line()
         .x(d => xScale(d.firstDayOfWeek))
@@ -47,6 +49,15 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         .attr("cy", d => yScale(d.gated_entries))
         .attr("r", 6)
         .style('fill','green')
+        .on("mouseover",function(d){
+            tooltip.style("opacity",1)
+                .attr("transform","translate("+d.pageX+","+d.pageY+")")
+                .style("left",(d.pageX)+"px")
+                .style("top",(d.pageY)+"px")
+                .html("Opening of Green Line Extension")
+            ;
+        })
+        .on("mouseout",function(){tooltip.style("opacity",0)})
     ;
     
     svg.append('path')
