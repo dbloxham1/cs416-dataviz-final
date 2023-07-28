@@ -51,13 +51,18 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         .style('fill','green')
         .on("mouseover",function(d){
             tooltip.style("opacity",1)
-                .attr("transform","translate("+d.pageX+","+d.pageY+")")
-                .style("left",(d.pageX)+"px")
-                .style("top",(d.pageY)+"px")
+                //.attr("transform","translate("+d.pageX+","+d.pageY+")")
+                .attr("width","100px")
+                .attr("height","40px")
+                .style("left",(d.pageX-100)+"px")
+                .style("top",(d.pageY-60)+"px")
                 .html("Opening of Green Line Extension")
             ;
         })
-        .on("mouseout",function(){tooltip.style("opacity",0)})
+        .on("mouseout",function(){
+            tooltip.style("opacity",0)
+            ;
+        })
     ;
     
     svg.append('path')
