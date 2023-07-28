@@ -55,7 +55,47 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             ;
         })
     ;
+
+    svg.selectAll()
+        .data(data.filter(d => d.firstDayOfWeek.getTime() >= new Date('2020-05-17').getTime() && d.firstDayOfWeek.getTime() < new Date('2020-05-24').getTime()))
+        .enter()
+        .append('circle')
+        .attr("cx", d => xScale(d.firstDayOfWeek))
+        .attr("cy", d => yScale(d.gated_entries))
+        .attr("r", 6)
+        .on("mouseover",function(d){
+            tooltip.style("opacity",1)
+                .style("left",(d.pageX)+"px")
+                .style("top",(d.pageY-60)+"px")
+                .html("Scheduled Shutdown at Airport")
+            ;
+        })
+        .on("mouseout",function(){
+            tooltip.style("opacity",0)
+            ;
+        })
+    ;
     
+    svg.selectAll()
+        .data(data.filter(d => d.firstDayOfWeek.getTime() >= new Date('2022-04-24').getTime() && d.firstDayOfWeek.getTime() < new Date('2022-04-30').getTime()))
+        .enter()
+        .append('circle')
+        .attr("cx", d => xScale(d.firstDayOfWeek))
+        .attr("cy", d => yScale(d.gated_entries))
+        .attr("r", 6)
+        .on("mouseover",function(d){
+            tooltip.style("opacity",1)
+                .style("left",(d.pageX)+"px")
+                .style("top",(d.pageY-60)+"px")
+                .html("Scheduled Shutdown at Airport")
+            ;
+        })
+        .on("mouseout",function(){
+            tooltip.style("opacity",0)
+            ;
+        })
+    ;
+
     svg.append('path')
         .style("stroke","blue")
         .data([data])
