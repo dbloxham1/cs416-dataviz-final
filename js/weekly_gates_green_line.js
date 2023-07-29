@@ -82,6 +82,17 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                 subject: {
                     radius: 10
                 }
+           }, {
+                note: {
+                    title: 'Mar 28, 2022',
+                    label: 'Garage Collapse at Government Center'
+                },
+                data: {firstDayOfWeek: '2022-03-28', gated_entries: 219554},
+                dy: 30,
+                dx: 60,
+                subject: {
+                    radius: 10
+                }
            }
        ];
    

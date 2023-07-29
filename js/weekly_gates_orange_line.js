@@ -64,6 +64,28 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             subject: {
                 radius: 10
             }
+        }, {
+            note: {
+                title: 'Aug 22, 2022',
+                label: 'Month-long Line Shutdown Begins'
+            },
+            data: {firstDayOfWeek: '2022-08-29', gated_entries: 46514},
+            dy: -30,
+            dx: -50,
+            subject: {
+                radius: 20
+            }
+        }, {
+            note: {
+                title: 'Mar 28, 2022',
+                label: 'Garage Collapse at Government Center'
+            },
+            data: {firstDayOfWeek: '2022-03-28', gated_entries: 388382},
+            dy: -100,
+            dx: -30,
+            subject: {
+                radius: 20
+            }
         }
     ];
    
