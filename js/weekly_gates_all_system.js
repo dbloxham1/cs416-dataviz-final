@@ -78,13 +78,16 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             },
             data: {firstDayOfWeek: '2020-03-09', gated_entries: 1991675},
             dy: 100,
-            dx: 50
+            dx: 50,
+            subject: {
+                radius: 10
+            }
         }
     ];
 
     window.makeAnnotations = d3.annotation()
         .annotations(annotations)
-        .type(d3.annotationCalloutElbow)
+        .type(d3.annotationCalloutCircle)
         .accessors({
             x: d => x(parseTime(d.firstDayOfWeek)),
             y: d => y(d.gated_entries)
