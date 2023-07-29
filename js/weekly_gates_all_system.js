@@ -81,7 +81,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             dy: 100,
             dx: 50,
             subject: {
-                radius: 10
+                radius: 15
             }
         }, {
             note: {
@@ -90,9 +90,9 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             },
             data: {firstDayOfWeek: '2022-12-26', gated_entries: 1022033},
             dy: 50,
-            dx: 50,
+            dx: 20,
             subject: {
-                radius: 20
+                radius: 15
             }
         }, {
             note: {
@@ -103,7 +103,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             dy: 50,
             dx: 50,
             subject: {
-                radius: 40
+                radius: 15
             }
         }, {
             note: {
@@ -114,7 +114,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             dy: 15,
             dx: 50,
             subject: {
-                radius: 20
+                radius: 15
             }
         }
     ];

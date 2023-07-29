@@ -69,7 +69,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                dy: 100,
                dx: 50, 
                subject: {
-                    radius: 10
+                    radius: 15
                }
            }, {
                 note: {
@@ -80,7 +80,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                 dy: -50,
                 dx: -70,
                 subject: {
-                    radius: 10
+                    radius: 15
                 }
            }, {
                 note: {
@@ -91,7 +91,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                 dy: 30,
                 dx: 60,
                 subject: {
-                    radius: 10
+                    radius: 15
                 }
            }
        ];
