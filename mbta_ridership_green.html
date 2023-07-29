@@ -51,6 +51,14 @@
                     updateChart(stationName);
                 }
             };
+            function resetChart() {
+                d3.select('#green').html('');
+                initialChart();
+                let branchSelect = document.getElementById('branch');
+                let stationSelect = document.getElementById('stationChoice');
+                branchSelect.value = "";
+                stationSelect.value = "";
+            }
         </script>
         <div class="flex_container">
             <label>Branch:&nbsp;</label>
@@ -66,6 +74,8 @@
             <select id="stationChoice" onchange="update(value)">
                 <option value="">All Stations</option>
             </select>
+            &nbsp;
+            <button id="resetChartButton" onclick="resetChart()">Reset Chart</button>
             <script>
                 document.getElementById('branch').addEventListener('change',function(){
                     var stationChoice = document.getElementById('stationChoice');
@@ -82,12 +92,22 @@
                     } else { var options = ['All Stations']; }
                     for(var i = 0; i < options.length; i++) {
                         var opt = document.createElement('option');
-                        opt.value = options[i];
+                        if (options[i] === 'All Stations') {
+                            opt.value = "";
+                        } else {
+                            opt.value = options[i];
+                        }
                         opt.innerHTML = options[i];
                         stationChoice.appendChild(opt);
                     }
                 });
             </script>
+        </div>
+        <div class="flex_container">
+            <p style="text-align:center" width="500">Note: Some stations available here do not have data available as they do not require gate access to board. This includes any station west of Kenmore (or Prudential if on the E branch).</p>
+        </div>
+        <div class="flex_container">
+            <p style="text-align:center" width="500">Additionally, since the opening of the Green Line Extension, stations between Lechmere and Union Square or Medford/Tufts have operated under a validation system where riders validate their ticket before boarding, however there is no gate restricting them from boarding at these stations.</p>
         </div>
     </body>
 </html>
