@@ -3,6 +3,7 @@ function updateChart(stationSelected){
     d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route_station.csv').then(data => {
         // Parse the date and convert gated_entries to number
         const parseTime = d3.timeParse('%Y-%m-%d');
+        const timeFormat = d3.timeFormat('%Y-%m-%d');
         data = data.filter(d => d.route_short === 'Green' & d.station_name === stationSelected).map(d => {
             d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
             d.gated_entries = +d.gated_entries;
@@ -31,6 +32,7 @@ function updateChart(stationSelected){
                      .range([height, 0]);
 
         var tooltip = d3.select('#tooltip');
+        var tooltipWidth = 100;
 
         const line = d3.line()
             .x(d => x(d.firstDayOfWeek))
@@ -41,6 +43,29 @@ function updateChart(stationSelected){
             .data([data])
             .attr('class', 'line')
             .attr('d', line);
+
+        // Add the scatterplot points
+        var points = svg.selectAll('dot')
+            .data(data)
+            .enter()
+            .append('circle')
+            .attr("cx", d => x(d.firstDayOfWeek))
+            .attr("cy", d => y(d.gated_entries))
+            .attr("r", 20)
+            .attr('fill','transparent')
+        ; 
+
+        points.on('mouseover', function(event, d) {
+            tooltip.style('display', null);
+            var xPosition = event.pageX - tooltipWidth / 2;
+            var yPosition = event.pageY - 10;
+            tooltip.style('left', xPosition + 'px')
+                .style('top', yPosition + 'px')
+                .html('Beginning of Week: ' + timeFormat(d.firstDayOfWeek) + '<br>' + 'Gated Entries: ' + d3.format(',.2f')(d.gated_entries));
+            })
+            .on('mouseout', function() {
+                tooltip.style('display', 'none');
+        });
 
         // Add the X Axis
         svg.append('g')
