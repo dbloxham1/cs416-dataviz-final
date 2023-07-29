@@ -10,8 +10,8 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
 
     // Set the dimensions and margins of the graph
     const margin = {top: 20, right: 75, bottom: 20, left: 75};
-    const width = d3.select("svg").attr("width") - margin.left - margin.right;
-    const height = d3.select("svg").attr("height") - margin.top - margin.bottom;
+    const width = 960 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     // Append the svg object to the body of the page
     const svg = d3.select('#blue')
