@@ -24,6 +24,13 @@
         circle {
             fill:orange;
         }
+        .flex_container {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: center;
+        }
     </style>
     <div id="tooltip"></div>
     <body>
@@ -40,5 +47,32 @@
         <script>
 
         </script>
+        <br>
+        <div class="flex_container">
+            <label>Station:&nbsp;</label>
+            <select id="stationChoice">
+                <option value="">All Stations</option>
+                <option value="Oak Grove">Oak Grove - End of Line</option>
+                <option value="Malden Center">Malden Center</option>
+                <option value="Wellington">Wellington</option>
+                <option value="Assembly">Assembly</option>
+                <option value="Sullivan Square">Sullivan Square</option>
+                <option value="Community College">Community College</option>
+                <option value="North Station">North Station</option>
+                <option value="Haymarket">Haymarket</option>
+                <option value="State">State</option>
+                <option value="Downtown Crossing">Downtown Crossing</option>
+                <option value="Chinatown">Chinatown</option>
+                <option value="Tufts Medical Center">Tufts Medical Center</option>
+                <option value="Back Bay">Back Bay</option>
+                <option value="Massachusetts Avenue">Massachusetts Avenue</option>
+                <option value="Ruggles">Ruggles</option>
+                <option value="Roxbury Crossing">Roxbury Crossing</option>
+                <option value="Jackson Square">Jackson Square</option>
+                <option value="Stony Brook">Stony Brook</option>
+                <option value="Green Street">Green Street</option>
+                <option value="Forest Hills">Forest Hills - End of Line</option>
+            </select>
+        </div>
     </body>
 </html>

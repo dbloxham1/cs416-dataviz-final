@@ -24,6 +24,13 @@
         circle {
             fill:blue;
         }
+        .flex_container {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: center;
+        }
     </style>
     <div id="tooltip"></div>
     <body>
@@ -40,5 +47,24 @@
         <script>
 
         </script>
+        <br>
+        <div class="flex_container">
+            <label>Station:&nbsp;</label>
+            <select id="stationChoice">
+                <option value="">All Stations</option>
+                <option value="Wonderland">Wonderland - End of Line</option>
+                <option value="Revere Beach">Revere Beach</option>
+                <option value="Beachmont">Beachmont</option>
+                <option value="Suffolk Downs">Suffolk Downs</option>
+                <option value="Orient Heights">Orient Heights</option>
+                <option value="Wood Island">Wood Island</option>
+                <option value="Airport">Airport</option>
+                <option value="Maverick">Maverick</option>
+                <option value="Aquarium">Aquarium</option>
+                <option value="State">State</option>
+                <option value="Government Center">Government Center</option>
+                <option value="Bowdoin">Bowdoin - End of Line</option>
+            </select>
+        </div>
     </body>
 </html>
