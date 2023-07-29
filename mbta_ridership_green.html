@@ -24,6 +24,13 @@
         circle {
             fill:green;
         }
+        .flex_container {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: center;
+        }
     </style>
     <div id="tooltip"></div>
     <body>
@@ -40,5 +47,42 @@
         <script>
 
         </script>
+        <div class="flex_container">
+            <label>Branch:&nbsp;</label>
+            <select id="branch">
+                <option value="">All Branches</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+            &nbsp; 
+            <label>Station:&nbsp;</label>
+            <select id="stationChoice">
+                <option value="">All Stations</option>
+            </select>
+            <script>
+                document.getElementById('branch').addEventListener('change',function(){
+                    var stationChoice = document.getElementById('stationChoice');
+                    stationChoice.innerHTML = "";
+
+                    if (this.value === "B") {
+                        var options = ['All Stations', 'Government Center',' Park Street', 'Boylston', 'Arlington', 'Copley', 'Hynes Convention Center', 'Kenmore', 'Blandford Street', 'Boston University East', 'Boston University Central', 'Amory Street', 'Babcock Street', "Packard's Corner", 'Harvard Avenue', 'Griggs Street', 'Allston Street', 'Warren Street', 'Washington Street', 'Sutherland Road', 'Chiswick Road', 'Chestnut Hill Avenue', 'South Street', 'Boston College'];
+                    } else if (this.value === "C") {
+                        var options = ['All Stations', 'Government Center',' Park Street', 'Boylston', 'Arlington', 'Copley', 'Hynes Convention Center', 'Kenmore', "Saint Mary's Street", 'Hawes Street', 'Kent Street', 'Saint Paul Street', 'Coolidge Corner', 'Summit Avenue', 'Brandon Hall', 'Fairbanks Street', 'Washington Square', 'Tappan Street', 'Dean Road', 'Englewood Avenue', 'Cleveland Circle'];
+                    } else if (this.value === "D") {
+                        var options = ['All Stations', 'Union Square', 'Lechmere', 'Science Park/West End', 'North Station', 'Haymarket', 'Government Center',' Park Street', 'Boylston', 'Arlington', 'Copley', 'Hynes Convention Center', 'Kenmore', 'Fenway', 'Longwood', 'Brookline Village', 'Brookline Hills', 'Beaconsfield', 'Reservoir', 'Chestnut Hill', 'Newton Centre', 'Newton Highlands', 'Eliot', 'Waban', 'Woodland', 'Riverside'];
+                    } else if (this.value === "E") {
+                        var options = ['All Stations', 'Medford/Tufts', 'Ball Square', 'Magoun Square', 'Gilman Square', 'East Somerville', 'Lechmere', 'Science Park/West End', 'North Station', 'Haymarket', 'Government Center',' Park Street', 'Boylston', 'Arlington', 'Copley', 'Prudential', 'Symphony', 'Northeastern University', 'Museum of Fine Arts', 'Longwood Medical Area', 'Brigham Circle', 'Fenwood Road', 'Mission Park', 'Riverway', 'Back of the Hill', 'Heath Street'];
+                    }
+                    for(var i = 0; i < options.length; i++) {
+                        var opt = document.createElement('option');
+                        opt.value = options[i];
+                        opt.innerHTML = options[i];
+                        stationChoice.appendChild(opt);
+                    }
+                });
+            </script>
+        </div>
     </body>
 </html>
