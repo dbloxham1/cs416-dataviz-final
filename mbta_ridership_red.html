@@ -8,6 +8,7 @@
     <script src="js/weekly_gates_green_line.js"></script>
     <script src="js/weekly_gates_orange_line.js"></script>
     <script src="js/weekly_gates_red_line.js"></script>
+    <script src="js/weekly_station_gates_red_line.js"></script>
     <style>
         path {
             fill:none;
@@ -44,11 +45,22 @@
             <button id="greenButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_green.html'">Green</button>
         </p>
         <div id="red" style="text-align:center"></div>
+        <script>
+            initialChart();
+            function update(stationName) {
+                d3.select('#red').html('');
+                if (stationName === "") {
+                    initialChart();
+                } else {
+                    updateChart(stationName);
+                }
+            };
+        </script>
         <br>
         <div class="flex_container">
             <label>Station:&nbsp;</label>
-            <select id="stationChoice">
-                <option value>Select Station</option>
+            <select id="stationChoice" onchange="update(value)">
+                <option value="">Select Station</option>
                 <option value="Alewife">Alewife - End of Line</option>
                 <option value="Davis">Davis</option>
                 <option value="Porter">Porter</option>

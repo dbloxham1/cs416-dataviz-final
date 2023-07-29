@@ -1,9 +1,9 @@
 // Load the data from the CSV file
-function initialChart(){
-    d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route.csv').then(data => {
+function updateChart(stationSelected){
+    d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route_station.csv').then(data => {
         // Parse the date and convert gated_entries to number
         const parseTime = d3.timeParse('%Y-%m-%d');
-        data = data.filter(d => d.route_short === 'Red').map(d => {
+        data = data.filter(d => d.route_short === 'Red' & d.station_name === stationSelected).map(d => {
             d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
             d.gated_entries = +d.gated_entries;
             return d;
