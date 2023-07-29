@@ -62,7 +62,8 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
        const annotations = [
            {
                note: {
-                   label: 'COVID Shutdown Begins'
+                    title: 'Mar 9, 2020',
+                    label: 'COVID Shutdown Begins'
                },
                data: {firstDayOfWeek: '2020-03-09', gated_entries: 302573},
                dy: 100,
@@ -72,6 +73,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                }
            }, {
                 note: {
+                    title: 'Mar 21, 2022',
                     label: "Opening of Green Line Extension"
                 }, 
                 data: {firstDayOfWeek: '2022-03-21', gated_entries: 274419},

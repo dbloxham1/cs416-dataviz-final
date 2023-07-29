@@ -74,6 +74,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
     const annotations = [
         {
             note: {
+                title: 'Mar 9, 2020',
                 label: 'COVID Shutdown Begins'
             },
             data: {firstDayOfWeek: '2020-03-09', gated_entries: 1991675},
