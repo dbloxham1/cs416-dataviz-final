@@ -65,6 +65,28 @@ function initialChart(){
                 subject: {
                     radius: 15
                 }
+            }, {
+                note: {
+                    title: 'May 23, 2022',
+                    label: 'Week of Harvard Commencement for classes 2020, 2021, and 2022'
+                },
+                data: {firstDayOfWeek: '2022-05-23', gated_entries: 661008},
+                dy: -30,
+                dx: 50,
+                subject: {
+                    radius: 15
+                }
+            }, {
+                note: {
+                    title: 'Early Feb 2023',
+                    label: 'Parking Garage Accident at Alewife'
+                },
+                data: {firstDayOfWeek: '2023-02-06', gated_entries: 556887},
+                dy: 50,
+                dx: -90,
+                subject: {
+                    radius: 15
+                }
             }
         ];
    
