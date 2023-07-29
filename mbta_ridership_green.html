@@ -94,6 +94,8 @@
                         var opt = document.createElement('option');
                         if (options[i] === 'All Stations') {
                             opt.value = "";
+                        } else if (options[i] === 'Science Park/West End') {
+                            opt.value = "Science Park";
                         } else {
                             opt.value = options[i];
                         }
@@ -107,7 +109,7 @@
             <p style="text-align:center" width="500">Note: Some stations available here do not have data available as they do not require gate access to board. This includes any station west of Kenmore (or Prudential if on the E branch).</p>
         </div>
         <div class="flex_container">
-            <p style="text-align:center" width="500">Additionally, since the opening of the Green Line Extension, stations between Lechmere and Union Square or Medford/Tufts have operated under a validation system where riders validate their ticket before boarding, however there is no gate restricting them from boarding at these stations.</p>
+            <p style="text-align:center" width="500">Additionally, since the opening of the Green Line Extension, stations between Lechmere and Union Square or Medford/Tufts have operated under a validation system where riders can validate their ticket before boarding, however there is no gate restricting them from boarding at these stations. Therefore,gated entries is not a useful metric in evaluating ridership at these stations.</p>
         </div>
     </body>
 </html>
