@@ -1,9 +1,9 @@
-// Load the data from the CSV file
 function updateChart(stationSelected){
+    // Load the data from the CSV file
     d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route_station.csv').then(data => {
         // Parse the date and convert gated_entries to number
         const parseTime = d3.timeParse('%Y-%m-%d');
-        data = data.filter(d => d.route_short === 'Red' & d.station_name === stationSelected).map(d => {
+        data = data.filter(d => d.route_short === 'Orange' & d.station_name === stationSelected).map(d => {
             d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
             d.gated_entries = +d.gated_entries;
             return d;
@@ -15,7 +15,7 @@ function updateChart(stationSelected){
         const height = 500 - margin.top - margin.bottom;
 
         // Append the svg object to the body of the page
-        const svg = d3.select('#red')
+        const svg = d3.select('#orange')
                   .append('svg')
                   .attr('width', width + margin.left + margin.right)
                   .attr('height', height + margin.top + margin.bottom)
@@ -35,9 +35,9 @@ function updateChart(stationSelected){
         const line = d3.line()
             .x(d => x(d.firstDayOfWeek))
             .y(d => y(d.gated_entries));
-    
+
         svg.append('path')
-            .style("stroke","red")
+            .style("stroke","orange")
             .data([data])
             .attr('class', 'line')
             .attr('d', line);

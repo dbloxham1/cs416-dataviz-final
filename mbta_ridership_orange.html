@@ -7,6 +7,7 @@
     <script src="js/weekly_gates_blue_line.js"></script>
     <script src="js/weekly_gates_green_line.js"></script>
     <script src="js/weekly_gates_orange_line.js"></script>
+    <script src="js/weekly_station_gates_orange_line.js"></script>"
     <script src="js/weekly_gates_red_line.js"></script>
     <style>
         path {
@@ -45,12 +46,20 @@
         </p>
         <div id="orange" style="text-align:center"></div>
         <script>
-
+            initialChart();
+            function update(stationName) {
+                d3.select('#orange').html('');
+                if (stationName === "") {
+                    initialChart();
+                } else {
+                    updateChart(stationName);
+                }
+            };
         </script>
         <br>
         <div class="flex_container">
             <label>Station:&nbsp;</label>
-            <select id="stationChoice">
+            <select id="stationChoice" onchange="update(value)">
                 <option value="">All Stations</option>
                 <option value="Oak Grove">Oak Grove - End of Line</option>
                 <option value="Malden Center">Malden Center</option>
