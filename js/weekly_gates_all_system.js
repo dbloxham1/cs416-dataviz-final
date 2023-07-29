@@ -97,10 +97,10 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
         }, {
             note: {
                 title: 'End of Dec 2021',
-                label: 'Holiday Dip in Riders + Covid?'
+                label: 'Holiday Dip in Riders + Resurging Covid Wave'
             },
             data: {firstDayOfWeek: '2021-12-27', gated_entries: 842841},
-            dy: 50,
+            dy: 30,
             dx: 50,
             subject: {
                 radius: 15
