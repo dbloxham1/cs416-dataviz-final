@@ -9,16 +9,8 @@
             fill:none;
             stroke:black;
         }
-        #tooltip {
-            opacity: 0;
-            position: relative;
-            text-align: center;
-            width: 100px; height: 0px;
-            background: white;
-            border: 2px;
-        }
         circle {
-            fill:black;
+            fill:transparent;
         }
         .flex_container {
             margin: auto;
@@ -27,7 +19,7 @@
             width: 70%;
         }
     </style>
-    <div id="tooltip"></div>
+    <div id="tooltip" style="position: relative; display: none; background: rgba(0, 0, 0, 0.7); color: white; padding: 10px; border-radius: 5px; width: 250px; overflow: hidden;"></div>
     <body>
         <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
         <h2 style="text-align:center">Ridership on the MBTA</h2>
@@ -38,10 +30,7 @@
             <p style="text-align:center" width="500">These charts show gated entries by T riders since the beginning of 2020. Some changes in ridership can be observed systemwide as an effect of environmental macro-conditions - such as the COVID pandemic, weather conditions, or seasonal passenger behavior - while other changes and trends more directly affect specific routes or stations individually (such as planned closures or unplanned accidents).</p>
         </div>
         <div class="flex_container">
-            <p style="text-align:center" width="500">Keep in mind two caveats when reading this data. First, because these charts are depicting gated entries, it does not explicitly determine that there were this many people riding the subway on any given week. Gated entries cannot include certain passengers who do not enter the T through a gate, such as fare evaders. It also doesn't account for passengers transferring between lines at connecting stations. Second, certain events may require shuttle buses to be used while a station, or set of stations, is closed, or gates may be disabled and left open to allow free passage to all riders. These events will not be able to track gated entries but there will still be passengers on the T.</p>
-        </div>
-        <div class="flex_container">
-            <p style="text-align: center" width="500">Click on each individual route in the buttons below to see charts detailing each route's ridership. Each route has different details.</p>
+            <p style="text-align: center" width="500">Hover over the line for details at each week. Click on each individual route in the buttons below to see charts detailing each route's ridership. Each route has different details.</p>
         </div>
         <p style="text-align:center">
             <button id="systemwideButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership.html'">Systemwide</button>
@@ -51,5 +40,11 @@
             <button id="greenButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_green.html'">Green</button>
         </p>
         <div id="overall" style="text-align:center"></div>
+        <div class="flex_container" style="text-align:center">
+            <p style="text-align:center" width="500">A gated entry is defined as a successful smart card tap or ticket insertion recorded at a faregate. More details on data definitions can be found <a href="https://mbta-massdot.opendata.arcgis.com/datasets/mbta-gated-station-entries-historical/about" target="_blank" rel="noopener noreferrer">here</a>.</p>
+        </div>
+        <div class="flex_container">
+            <p style="text-align:center" width="500">Keep in mind two caveats when reading this data. First, because these charts are depicting gated entries, it does not explicitly determine that there were this many people riding the subway on any given week. Gated entries cannot include certain passengers who do not enter the T through a gate, such as fare evaders. It also doesn't account for passengers transferring between lines at connecting stations. Second, certain events may require shuttle buses to be used while a station, or set of stations, is closed, or gates may be disabled and left open to allow free passage to all riders. These events will not be able to track gated entries but there will still be passengers on the T.</p>
+        </div>
     </body>
 </html>

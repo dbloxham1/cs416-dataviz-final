@@ -2,6 +2,7 @@
 d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_overall.csv').then(data => {
     // Parse the date and convert gated_entries to number
     const parseTime = d3.timeParse('%Y-%m-%d');
+    const timeFormat = d3.timeFormat('%Y-%m-%d');
     data.forEach(d => {
         d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
         d.gated_entries = +d.gated_entries;
@@ -29,31 +30,42 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
                      .range([height, 0]);
 
     var tooltip = d3.select('#tooltip');
+    var tooltipWidth = 100;
+    var tooltipHeight = 50;
 
     const line = d3.line()
         .x(d => x(d.firstDayOfWeek))
         .y(d => y(d.gated_entries));
 
     // Add the scatterplot points
-    /* svg.selectAll()
-        .data(data.filter(d => d.firstDayOfWeek.getTime() >= new Date('2020-03-08').getTime() && d.firstDayOfWeek.getTime() < new Date('2020-03-15').getTime()))
+    var points = svg.selectAll('dot')
+        .data(data)
         .enter()
         .append('circle')
         .attr("cx", d => x(d.firstDayOfWeek))
         .attr("cy", d => y(d.gated_entries))
-        .attr("r", 6)
-        .on("mouseover",function(d){
-            tooltip.style("opacity",1)
-                .style("left",(d.pageX)+"px")
-                .style("top",(d.pageY-60)+"px")
-                .html("COVID Shutdown Begins")
-            ;
-        })
-        .on("mouseout",function(){
-            tooltip.style("opacity",0)
-            ;
-        })
-    ; */
+        .attr("r", 20)
+        .attr('fill','transparent')
+    ; 
+
+    points.on('mouseover', function(event, d) {
+        tooltip.style('display', null);
+        var xPosition = event.pageX - tooltipWidth / 2;
+        var yPosition = event.pageY - 10;
+        tooltip.style('left', xPosition + 'px')
+            .style('top', yPosition + 'px')
+            .html('Beginning of Week: ' + timeFormat(d.firstDayOfWeek) + '<br>' + 'Gated Entries: ' + d3.format(',.2f')(d.gated_entries));
+    })
+        .on('mouseout', function() {
+            tooltip.style('display', 'none');
+        });
+        /*.on('mousemove', function(event, d) {
+            var xPosition = event.pageX - tooltipWidth / 2;
+            var yPosition = event.pageY - tooltipHeight - 10;
+            tooltip.style('left', xPosition + 'px')
+                .style('top', yPosition + 'px')
+                .html('Date: ' + timeFormat(d.firstDayOfWeek) + '<br>' + 'Entries: ' + d.gated_entries);
+        });*/
 
     svg.append('path')
         .data([data])
@@ -69,7 +81,6 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
     svg.append('g')
        .call(d3.axisLeft(y));
 
-    const timeFormat = d3.timeFormat('%Y-%m-%d');
     //'2020-03-09' and 1991675
     const annotations = [
         {
