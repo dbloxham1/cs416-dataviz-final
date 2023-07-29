@@ -4,6 +4,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="js/weekly_gates_blue_line.js"></script>
+    <script src="js/weekly_station_gates_blue_line.js"></script>
     <style>
         path {
             fill:none;
@@ -41,12 +42,26 @@
         </p>
         <div id="blue" style="text-align:center"></div>
         <script>
-
+            initialChart();
+            function update(stationName) {
+                d3.select('#blue').html('');
+                if (stationName === "") {
+                    initialChart();
+                } else {
+                    updateChart(stationName);
+                }
+            };
+            function resetChart() {
+                d3.select('#blue').html('');
+                initialChart();
+                let stationSelect = document.getElementById('stationChoice');
+                stationSelect.value = "";
+            }
         </script>
         <br>
         <div class="flex_container">
             <label>Station:&nbsp;</label>
-            <select id="stationChoice">
+            <select id="stationChoice" onchange="update(value)">
                 <option value="">All Stations</option>
                 <option value="Wonderland">Wonderland - End of Line</option>
                 <option value="Revere Beach">Revere Beach</option>
@@ -57,10 +72,12 @@
                 <option value="Airport">Airport</option>
                 <option value="Maverick">Maverick</option>
                 <option value="Aquarium">Aquarium</option>
-                <option value="State">State</option>
+                <option value="State Street">State</option>
                 <option value="Government Center">Government Center</option>
                 <option value="Bowdoin">Bowdoin - End of Line</option>
             </select>
+            &nbsp;
+            <button id="resetChartButton" onclick="resetChart()">Reset Chart</button>
         </div>
     </body>
 </html>

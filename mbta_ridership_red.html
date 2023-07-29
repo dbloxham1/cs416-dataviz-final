@@ -51,6 +51,12 @@
                     updateChart(stationName);
                 }
             };
+            function resetChart() {
+                d3.select('#red').html('');
+                initialChart();
+                let stationSelect = document.getElementById('stationChoice');
+                stationSelect.value = "";
+            };
         </script>
         <br>
         <div class="flex_container">
@@ -80,6 +86,8 @@
                 <option value="Shawmut">Shawmut</option>
                 <option value="Ashmont">Ashmont - End of Line</option>
             </select>
+            &nbsp;
+            <button id="resetChartButton" onclick="resetChart()">Reset Chart</button>
         </div>
     </body>
 </html>

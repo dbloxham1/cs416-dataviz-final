@@ -51,6 +51,12 @@
                     updateChart(stationName);
                 }
             };
+            function resetChart() {
+                d3.select('#orange').html('');
+                initialChart();
+                let stationSelect = document.getElementById('stationChoice');
+                stationSelect.value = "";
+            };
         </script>
         <br>
         <div class="flex_container">
@@ -65,7 +71,7 @@
                 <option value="Community College">Community College</option>
                 <option value="North Station">North Station</option>
                 <option value="Haymarket">Haymarket</option>
-                <option value="State">State</option>
+                <option value="State Street">State</option>
                 <option value="Downtown Crossing">Downtown Crossing</option>
                 <option value="Chinatown">Chinatown</option>
                 <option value="Tufts Medical Center">Tufts Medical Center</option>
@@ -78,6 +84,8 @@
                 <option value="Green Street">Green Street</option>
                 <option value="Forest Hills">Forest Hills - End of Line</option>
             </select>
+            &nbsp;
+            <button id="resetChartButton" onclick="resetChart()">Reset Chart</button>
         </div>
     </body>
 </html>
