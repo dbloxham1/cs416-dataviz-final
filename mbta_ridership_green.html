@@ -4,6 +4,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="js/weekly_gates_green_line.js"></script>
+    <script src="js/weekly_station_gates_green_line.js"></script>
     <style>
         path {
             fill:none;
@@ -41,7 +42,15 @@
         </p>
         <div id="green" style="text-align:center"></div>
         <script>
-
+            initialChart();
+            function update(stationName) {
+                d3.select('#green').html('');
+                if (stationName === "") {
+                    initialChart();
+                } else {
+                    updateChart(stationName);
+                }
+            };
         </script>
         <div class="flex_container">
             <label>Branch:&nbsp;</label>
@@ -54,7 +63,7 @@
             </select>
             &nbsp; 
             <label>Station:&nbsp;</label>
-            <select id="stationChoice">
+            <select id="stationChoice" onchange="update(value)">
                 <option value="">All Stations</option>
             </select>
             <script>
