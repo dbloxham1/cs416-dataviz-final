@@ -35,29 +35,6 @@
         <div id="red" style="text-align:center"></div>
         <script>
             initialChart();
-            var tooltip = d3.select('#tooltip');
-            var timeFormat2 = d3.timeFormat('%Y-%m-%d');
-            var points = svg.selectAll('dot')
-                .data(data)
-                .enter()
-                .append('circle')
-                .attr("cx", d => x(d.firstDayOfWeek))
-                .attr("cy", d => y(d.gated_entries))
-                .attr("r", 20)
-                .attr('fill','transparent')
-            ; 
-
-            points.on('mouseover', function(event, d) {
-                tooltip.style('display', null);
-                var xPosition = event.pageX - tooltipWidth / 2;
-                var yPosition = event.pageY - 10;
-                tooltip.style('left', xPosition + 'px')
-                    .style('top', yPosition + 'px')
-                    .html('Beginning of Week: ' + timeFormat2(d.firstDayOfWeek) + '<br>' + 'Gated Entries: ' + d3.format(',.2f')(d.gated_entries));
-            })
-                .on('mouseout', function() {
-                    tooltip.style('display', 'none');
-                });
             function update(stationName) {
                 d3.select('#red').html('');
                 if (stationName === "") {
