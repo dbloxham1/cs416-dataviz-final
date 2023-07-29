@@ -24,6 +24,13 @@
         circle {
             fill:red;
         }
+        .flex_container {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: center;
+        }
     </style>
     <div id="tooltip"></div>
     <body>
@@ -37,8 +44,34 @@
             <button id="greenButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_green.html'">Green</button>
         </p>
         <div id="red" style="text-align:center"></div>
-        <script>
-
-        </script>
+        <br>
+        <div class="flex_container">
+            <label>Station:&nbsp;</label>
+            <select id="stationChoice">
+                <option value>Select Station</option>
+                <option value="Alewife">Alewife - End of Line</option>
+                <option value="Davis">Davis</option>
+                <option value="Porter">Porter</option>
+                <option value="Harvard">Harvard</option>
+                <option value="Central">Central</option>
+                <option value="Kendall/MIT">Kendall/MIT</option>
+                <option value="Charles/MGH">Charles/MGH</option>
+                <option value="Park Street">Park Street</option>
+                <option value="Downtown Crossing">Downtown Crossing</option>
+                <option value="South Station">South Station</option>
+                <option value="Broadway">Broadway</option>
+                <option value="Andrew">Andrew</option>
+                <option value="JFK/UMass">JFK/UMass</option>
+                <option value="North Quincy">North Quincy</option>
+                <option value="Wollaston">Wollaston</option>
+                <option value="Quincy Center">Quincy Center</option>
+                <option value="Quincy Adams">Quincy Adams</option>
+                <option value="Braintree">Braintree - End of Line</option>
+                <option value="Savin Hill">Savin Hill</option>
+                <option value="Fields Corner">Fields Corner</option>
+                <option value="Shawmut">Shawmut</option>
+                <option value="Ashmont">Ashmont - End of Line</option>
+            </select>
+        </div>
     </body>
 </html>

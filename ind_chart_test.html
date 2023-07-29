@@ -1,19 +1,172 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>D3.js Visualization</title>
+<html lang="en">
+    <title>CS 416 Narrative Visualization Project</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
-    <script src="js/packages/d3-annotation.min.js"></script>
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+    <script src="js/weekly_gates_all_system.js"></script>
+    <script src="js/weekly_gates_blue_line.js"></script>
+    <script src="js/weekly_gates_green_line.js"></script>
+    <script src="js/weekly_gates_orange_line.js"></script>
+    <script src="js/weekly_gates_red_line.js"></script>
     <style>
         path {
             fill:none;
             stroke:black;
         }
+        #tooltip {
+            opacity: 0;
+            position: relative;
+            text-align: center;
+            width: 100px; height: 0px;
+            background: white;
+            border: 2px;
+        }
+        circle {
+            fill:red;
+        }
+        .flex_container {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: center;
+        }
     </style>
-</head>
-<body>
-    <div id="overall"></div>
-    <svg width = 600 height = 600></svg>
-    <script src="weekly_gates_green_line.js"></script>
-</body>
+    <div id="tooltip"></div>
+    <body>
+        <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
+        <h2 style="text-align:center">Ridership on the MBTA</h2>
+        <p style="text-align:center">
+            <button id="systemwideButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership.html'">Systemwide</button>
+            <button id="redButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_red.html'">Red</button>
+            <button id="orangeButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_orange.html'">Orange</button>
+            <button id="blueButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_blue.html'">Blue</button>
+            <button id="greenButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_green.html'">Green</button>
+        </p>
+        <div style="text-align:center">
+            <svg width = 960 height = 500></svg>
+            <script>
+                // Load the data from the CSV file
+d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route.csv').then(data => {
+    // Parse the date and convert gated_entries to number
+    const parseTime = d3.timeParse('%Y-%m-%d');
+    data = data.filter(d => d.route_short === 'Red').map(d => {
+        d.firstDayOfWeek = parseTime(d.firstDayOfWeek);
+        d.gated_entries = +d.gated_entries;
+        return d;
+    });
+
+    // Set the dimensions and margins of the graph
+    const margin = {top: 20, right: 75, bottom: 20, left: 75};
+    const width = 960 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+
+    // Append the svg object to the body of the page
+    const svg = d3.select('svg')
+                  .append('svg')
+                  .attr('width', width + margin.left + margin.right)
+                  .attr('height', height + margin.top + margin.bottom)
+                  .append('g')
+                  .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    // Define the scales
+    const x = d3.scaleTime()
+                     .domain(d3.extent(data, d => d.firstDayOfWeek))
+                     .range([0, width]);
+    const y = d3.scaleLinear()
+                     .domain([0, d3.max(data, d => d.gated_entries)])
+                     .range([height, 0]);
+
+    var tooltip = d3.select('#tooltip');
+
+    const line = d3.line()
+        .x(d => x(d.firstDayOfWeek))
+        .y(d => y(d.gated_entries));
+    
+    svg.append('path')
+        .style("stroke","red")
+        .data([data])
+        .attr('class', 'line')
+        .attr('d', line);
+
+    // Add the X Axis
+    svg.append('g')
+       .attr('transform', `translate(0, ${height})`)
+       .call(d3.axisBottom(x));
+
+    // Add the Y Axis
+    svg.append('g')
+       .call(d3.axisLeft(y));
+
+    const timeFormat = d3.timeFormat('%Y-%m-%d');
+
+    const annotations = [
+        {
+            note: {
+                title: 'Mar 9, 2020',
+                label: 'COVID Shutdown Begins'
+            },
+            data: {firstDayOfWeek: '2020-03-09', gated_entries: 777938},
+            dy: 100,
+            dx: 50,
+            subject: {
+                radius: 15
+            }
+        }
+    ];
+   
+    window.makeAnnotations = d3.annotation()
+        .annotations(annotations)
+        .type(d3.annotationCalloutCircle)
+        .accessors({
+            x: d => x(parseTime(d.firstDayOfWeek)),
+            y: d => y(d.gated_entries)
+        })
+        .accessorsInverse({
+            firstDayOfWeek: d => timeFormat(x.invert(d.x)),
+            gated_entries: d => y.invert(d.y)
+        })
+   
+    svg.append('g')
+        .attr('class','annotation-test')
+        .call(makeAnnotations)
+    ;
+   
+    svg.selectAll('g.annotation-connector, g.annotation-note')
+        .classed('hidden',true)
+    ;
+});
+
+            </script>
+        </div>
+        <br>
+        <div class="flex_container">
+            <label>Station:&nbsp;</label>
+            <select id="stationChoice">
+                <option value>Select Station</option>
+                <option value="Alewife">Alewife - End of Line</option>
+                <option value="Davis">Davis</option>
+                <option value="Porter">Porter</option>
+                <option value="Harvard">Harvard</option>
+                <option value="Central">Central</option>
+                <option value="Kendall/MIT">Kendall/MIT</option>
+                <option value="Charles/MGH">Charles/MGH</option>
+                <option value="Park Street">Park Street</option>
+                <option value="Downtown Crossing">Downtown Crossing</option>
+                <option value="South Station">South Station</option>
+                <option value="Broadway">Broadway</option>
+                <option value="Andrew">Andrew</option>
+                <option value="JFK/UMass">JFK/UMass</option>
+                <option value="North Quincy">North Quincy</option>
+                <option value="Wollaston">Wollaston</option>
+                <option value="Quincy Center">Quincy Center</option>
+                <option value="Quincy Adams">Quincy Adams</option>
+                <option value="Braintree">Braintree - End of Line</option>
+                <option value="Savin Hill">Savin Hill</option>
+                <option value="Fields Corner">Fields Corner</option>
+                <option value="Shawmut">Shawmut</option>
+                <option value="Ashmont">Ashmont - End of Line</option>
+            </select>
+        </div>
+    </body>
 </html>
