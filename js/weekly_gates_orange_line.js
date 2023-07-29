@@ -1,6 +1,5 @@
 // Load the data from the CSV file
 function initialChart(){
-    console.log("initialChart() has been called");
     d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/data/gated_entries_by_week_route.csv').then(data => {
         // Parse the date and convert gated_entries to number
         const parseTime = d3.timeParse('%Y-%m-%d');
@@ -36,7 +35,7 @@ function initialChart(){
         const line = d3.line()
             .x(d => x(d.firstDayOfWeek))
             .y(d => y(d.gated_entries));
-
+    
         svg.append('path')
             .style("stroke","orange")
             .data([data])
