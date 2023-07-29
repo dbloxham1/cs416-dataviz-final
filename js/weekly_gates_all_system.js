@@ -83,6 +83,39 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             subject: {
                 radius: 10
             }
+        }, {
+            note: {
+                title: 'End of Dec 2022',
+                label: 'Holiday Dip in Riders'
+            },
+            data: {firstDayOfWeek: '2022-12-26', gated_entries: 1022033},
+            dy: 50,
+            dx: 50,
+            subject: {
+                radius: 20
+            }
+        }, {
+            note: {
+                title: 'End of Dec 2021',
+                label: 'Holiday Dip in Riders + Covid?'
+            },
+            data: {firstDayOfWeek: '2021-12-27', gated_entries: 842841},
+            dy: 50,
+            dx: 50,
+            subject: {
+                radius: 40
+            }
+        }, {
+            note: {
+                title: 'End of Dec 2020',
+                label: 'Small Holiday Dip in Riders'
+            },
+            data: {firstDayOfWeek: '2020-12-28', gated_entries: 476489},
+            dy: 15,
+            dx: 50,
+            subject: {
+                radius: 20
+            }
         }
     ];
 
