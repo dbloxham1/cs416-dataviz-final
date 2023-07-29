@@ -35,6 +35,18 @@
     <body>
         <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
         <h2 style="text-align:center">Ridership on the MBTA</h2>
+        <div class="flex_container">
+            <p style="text-align:center" width="500">   Boston's MBTA is the oldest running subway system in the United States and in North America. Although it has provided service to the population of the Boston metropolitan area since 1897, it faces many challenges, some of which come as a result of its age.</p>
+        </div>
+        <div class="flex_container">
+            <p style="text-align:center" width="500">These charts show gated entries by T riders since the beginning of 2020. Some changes in ridership can be observed systemwide as an effect of environmental macro-conditions - such as the COVID pandemic, weather conditions, or seasonal passenger behavior - while other changes and trends more directly affect specific routes or stations individually (such as planned closures or unplanned accidents).</p>
+        </div>
+        <div class="flex_container">
+            <p style="text-align:center" width="500">Keep in mind two caveats when reading this data. First, because these charts are depicting gated entries, it does not explicitly determine that there were this many people riding the subway on any given week. Gated entries cannot include certain passengers who do not enter the T through a gate, such as fare evaders. It also doesn't account for passengers transferring between lines at connecting stations. Second, certain events may require shuttle buses to be used while a station, or set of stations, is closed, or gates may be disabled and left open to allow free passage to all riders. These events will not be able to track gated entries but there will still be passengers on the T.</p>
+        </div>
+        <div class="flex_container">
+            <p style="text-align: center" width="500">Click on each individual route in the buttons below to see charts detailing each route's ridership. Each route has different details.</p>
+        </div>
         <p style="text-align:center">
             <button id="systemwideButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership.html'">Systemwide</button>
             <button id="redButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_red.html'">Red</button>
@@ -43,14 +55,5 @@
             <button id="greenButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_green.html'">Green</button>
         </p>
         <div id="overall" style="text-align:center"></div>
-        <div class="flex_container">
-            <p style="text-align:center" width="500">   Boston's MBTA is the oldest running subway system in the United States and in North America. Although it has provided service to the population of the Boston metropolitan area since 1897, it faces many challenges, some of which come as a result of its age.</p>
-        </div>
-        <div class="flex_container">
-            <p style="text-align:center" width="500">These charts show gated entries by T riders since the beginning of 2020. Some changes in ridership can be observed systemwide as an effect of environmental macro-conditions - such as the COVID pandemic - while other changes and trends may be more visible by observing individual routes or stations.</p>
-        </div>
-        <div class="flex_container">
-            <p style="text-align: center" width="500">Click on each individual route in the buttons above to see charts detailing each route's ridership. Each route has different details.</p>
-        </div>
     </body>
 </html>
