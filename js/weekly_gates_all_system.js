@@ -51,7 +51,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
     points.on('mouseover', function(event, d) {
         tooltip.style('visibility', 'visible');
         var xPosition = event.pageX - tooltipWidth / 2;
-        var yPosition = event.pageY - 10;
+        var yPosition = event.pageY - tooltipHeight;
         tooltip.style('left', xPosition + 'px')
             .style('top', yPosition + 'px')
             .html('Beginning of Week: ' + timeFormat(d.firstDayOfWeek) + '<br>' + 'Gated Entries: ' + d3.format(',.2f')(d.gated_entries));

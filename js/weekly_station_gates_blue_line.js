@@ -33,6 +33,7 @@ function updateChart(stationSelected){
 
         var tooltip = d3.select('#tooltip');
         var tooltipWidth = 100;
+        var tooltipHeight = 50;
 
         const line = d3.line()
             .x(d => x(d.firstDayOfWeek))
@@ -58,7 +59,7 @@ function updateChart(stationSelected){
         points.on('mouseover', function(event, d) {
             tooltip.style('visibility', 'visible');
             var xPosition = event.pageX - tooltipWidth / 2;
-            var yPosition = event.pageY - 10;
+            var yPosition = event.pageY - tooltipHeight;
             tooltip.style('left', xPosition + 'px')
                 .style('top', yPosition + 'px')
                 .html('Beginning of Week: ' + timeFormat(d.firstDayOfWeek) + '<br>' + 'Gated Entries: ' + d3.format(',.2f')(d.gated_entries));
