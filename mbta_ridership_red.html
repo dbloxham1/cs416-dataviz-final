@@ -23,6 +23,10 @@
         circle {
             fill:transparent;
         }
+        p {
+            margin-left: 150px;
+            margin-right: 150px;
+        }
         .flex_container {
             margin: auto;
             display: flex;
@@ -35,9 +39,9 @@
     <body>
         <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
         <h2 style="text-align:center">Ridership on the MBTA</h2>
-        <div class="flex_container">
-            <p style="text-align: center" width="500">Hover over the line for details at each week. Click on each individual route in the buttons below to see charts detailing each route's ridership. Each route has different details. Additional data is available at an individual station level using the dropdown below the chart.</p>
-        </div>
+        
+        <p style="text-align: center" width="500">Hover over the line for details at each week. Click on each individual route in the buttons below to see charts detailing each route's ridership. Each route has different details. Additional data is available at an individual station level using the dropdown below the chart.</p>
+
         <p style="text-align:center">
             <button id="systemwideButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership.html'">Systemwide</button>
             <button id="redButton" onclick="window.location.href='https://dbloxham1.github.io/mbta_ridership_red.html'">Red</button>
@@ -94,8 +98,9 @@
             &nbsp;
             <button id="resetChartButton" onclick="resetChart()">Reset Chart</button>
         </div>
-        <div class="flex_container" style="text-align:center">
-            <p style="text-align:center" width="500">A gated entry is defined as a successful smart card tap or ticket insertion recorded at a faregate. More details on data definitions can be found <a href="https://mbta-massdot.opendata.arcgis.com/datasets/mbta-gated-station-entries-historical/about" target="_blank" rel="noopener noreferrer">here</a>.</p>
-        </div>
+
+        <p style="text-align:center" width="500">A gated entry is defined as a successful smart card tap or ticket insertion recorded at a faregate. More details on data definitions can be found <a href="https://mbta-massdot.opendata.arcgis.com/datasets/mbta-gated-station-entries-historical/about" target="_blank" rel="noopener noreferrer">here</a>.</p>
+
+        <p style="text-align: center;" width="500">Data Source: <a href="https://mbta-massdot.opendata.arcgis.com/datasets/mbta-gated-station-entries-historical/about" target="_blank" rel="noopener noreferrer">MBTA Gated Station Entries - Historical</a></p>
     </body>
 </html>
