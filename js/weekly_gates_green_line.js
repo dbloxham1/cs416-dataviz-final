@@ -113,6 +113,17 @@ function initialChart(){
                 subject: {
                     radius: 15
                 }
+            }, {
+                note: {
+                    title: 'Apr 17, 2023',
+                    label: 'Boston Marathon 2023'
+                },
+                data: {firstDayOfWeek: '2023-04-17', gated_entries: 330237},
+                dy: -45,
+                dx: -40,
+                subject: {
+                    radius: 15
+                }
             }
         ];
    
