@@ -111,6 +111,17 @@ function initialChart(){
                 subject: {
                     radius: 15
                 }
+            }, {//437218
+                note: {
+                    title: 'Jul 21, 2022',
+                    label: 'Train Catches Fire Between Assembly and Wellington'
+                },
+                data: {firstDayOfWeek: '2022-07-18', gated_entries: 437218},
+                dy: -50,
+                dx: 50,
+                subject: {
+                    radius: 15
+                }
             }
         ];
    
