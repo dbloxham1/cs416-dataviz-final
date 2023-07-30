@@ -49,7 +49,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
     ; 
 
     points.on('mouseover', function(event, d) {
-        tooltip.style('display', null);
+        tooltip.style('visibility', 'visible');
         var xPosition = event.pageX - tooltipWidth / 2;
         var yPosition = event.pageY - 10;
         tooltip.style('left', xPosition + 'px')
@@ -57,7 +57,7 @@ d3.csv('https://raw.githubusercontent.com/dbloxham1/cs416-dataviz-final/main/dat
             .html('Beginning of Week: ' + timeFormat(d.firstDayOfWeek) + '<br>' + 'Gated Entries: ' + d3.format(',.2f')(d.gated_entries));
     })
         .on('mouseout', function() {
-            tooltip.style('display', 'none');
+            tooltip.style('visibility', 'hidden');
         });
         /*.on('mousemove', function(event, d) {
             var xPosition = event.pageX - tooltipWidth / 2;

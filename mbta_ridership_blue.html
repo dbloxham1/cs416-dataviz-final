@@ -10,6 +10,16 @@
             fill:none;
             stroke:black;
         }
+        .mytooltip{
+            visibility: hidden;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            overflow: hidden;
+        }
         circle {
             fill:transparent;
         }
@@ -21,7 +31,7 @@
             justify-content: center;
         }
     </style>
-    <div id="tooltip" style="position: relative; display: none; background: rgba(0, 0, 0, 0.7); color: white; padding: 10px; border-radius: 5px; width: 250px; overflow: hidden;"></div>
+    <div id="tooltip" class="mytooltip"></div>
     <body>
         <h1 style="text-align:center">CS416 Narrative Visualization Project</h1>
         <h2 style="text-align:center">Ridership on the MBTA</h2>
