@@ -57,7 +57,7 @@ function updateChart(stationSelected){
         ; 
 
         points.on('mouseover', function(event, d) {
-            tooltip.style('visibility', visible);
+            tooltip.style('visibility', 'visible');
             var xPosition = event.pageX - tooltipWidth / 2;
             var yPosition = event.pageY - tooltipHeight;
             tooltip.style('left', xPosition + 'px')

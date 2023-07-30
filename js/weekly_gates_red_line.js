@@ -111,6 +111,17 @@ function initialChart(){
                 subject: {
                     radius: 15
                 }
+            }, {//554626
+                note: {
+                    title: 'Sep 11, 2021',
+                    label: 'Man Dies Falling Through JFK/UMass Stairs'
+                },
+                data: {firstDayOfWeek: '2021-09-06', gated_entries: 515922},
+                dy: 120,
+                dx: 20,
+                subject: {
+                    radius: 15
+                }
             }
         ];
    
